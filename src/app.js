@@ -4,17 +4,9 @@ import isolate from '@cycle/isolate';
 import {Observable} from 'rx';
 
 const slides = [
-  function ({DOM}) {
-    return {
-      DOM: Observable.just(div('.hello', 'Hello world!'))
-    };
-  },
-
-  function ({DOM}) {
-    return {
-      DOM: Observable.just(div('.hello', 'Wow such'))
-    };
-  }
+  require('./slides/00-intro.js').default,
+  require('./slides/01-feedback-loop.js').default,
+  require('./slides/02-hot-reloading').default
 ];
 
 function view (slide, slideIndex) {
@@ -26,9 +18,25 @@ function view (slide, slideIndex) {
         button('.next', {disabled: slideIndex === slides.length - 1}, 'Forward')
       ]),
 
-      slide.DOM
+      div('.slide', slide.DOM)
     ])
   );
+}
+
+const cachedSlides = {};
+
+function slide(slideIndex, {DOM}) {
+  if (slideIndex in cachedSlides) {
+    console.log('cache hit for', slideIndex);
+    return cachedSlides[slideIndex];
+  }
+
+  console.log('cache miss for', slideIndex);
+  const fetchedSlide = isolate(slides[slideIndex])({DOM});
+
+  cachedSlides[slideIndex] = fetchedSlide;
+
+  return fetchedSlide;
 }
 
 export default function App ({DOM}) {
@@ -47,7 +55,7 @@ export default function App ({DOM}) {
     .scan((total, change) => total + change);
 
   const slide$ = slideIndex$
-    .map(slideIndex => isolate(slides[slideIndex])({DOM}));
+    .map(slideIndex => slide(slideIndex, {DOM}));
 
   return {
     DOM: slide$.withLatestFrom(slideIndex$, view)
