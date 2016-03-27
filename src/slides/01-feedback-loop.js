@@ -14,7 +14,7 @@ A normal browser development cycle looks something like this (assuming you're no
 
                           +-------------+
                           |             |
-          +-------------->k+ Change code +-----------------+
+          +-------------->+ Change code +-----------------+
           |               |             |                 |
           |               +-------------+                 |
           |                                               |
@@ -36,37 +36,8 @@ A normal browser development cycle looks something like this (assuming you're no
 
 `;
 
-function view (count) {
-  return (
-    div('.counter', [
-      div('.count', `Count: ${count}`),
-      button('.subtract', 'Subtract'),
-      button('.add', 'Add')
-    ])
-  );
-}
-
 export default function ({DOM}) {
-  const add$ = DOM
-    .select('.add')
-    .events('click')
-    .map(ev => +1);
-
-  const subtract$ = DOM
-    .select('.subtract')
-    .events('click')
-    .map(ev => -1);
-
-  const count$ = add$.merge(subtract$)
-    .startWith(0)
-    .scan((total, change) => total + change)
-
   return {
-    DOM: count$.map((count) => (
-      div('.wrapper', [
-        md(text),
-        view(count)
-      ])
-    ))
+    DOM: Observable.just(md(text))
   };
 }

@@ -12,13 +12,13 @@ const slides = [
 function view (slide, slideIndex) {
   return (
     div('.slides', [
+      div('.slide', slide.DOM),
+
       div('.controls', [
         button('.previous', {disabled: slideIndex === 0}, 'Back'),
-        slideIndex.toString(),
+        `${slideIndex + 1} / ${slides.length}`,
         button('.next', {disabled: slideIndex === slides.length - 1}, 'Forward')
-      ]),
-
-      div('.slide', slide.DOM)
+      ])
     ])
   );
 }
