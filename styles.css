@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5 {
 }
 
 pre code {
+  align-self: flex-end;
   color: #ff0080;
 }
 
@@ -41,9 +42,12 @@ pre code {
 
   align-items: center;
 
-  font-size: 1.3em;
+  font-size: 1.4em;
 
   padding: 0.8em;
+
+  height: 100%;
+  width: 60%;
 }
 
 .slide pre {
@@ -53,7 +57,32 @@ pre code {
 
 .controls {
   display: flex;
+
   justify-content: space-between;
 
   width: 20%;
+}
+
+.title-slide .markdown {
+  height: 20%:
+}
+
+.markdown {
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-around;
+}
+
+button {
+  border: none;
+
+  background: hotpink;
+}
+
+button:disabled {
+  background: pink;
 }

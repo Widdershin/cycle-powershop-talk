@@ -18,7 +18,7 @@ function view (slide, slideIndex) {
       div('.controls', [
         button('.previous', {disabled: slideIndex === 0}, 'Back'),
         `${slideIndex + 1} / ${slides.length}`,
-        button('.next', {disabled: slideIndex === slides.length - 1}, 'Forward')
+        button('.next', {disabled: slideIndex === slides.length - 1}, 'Next')
       ])
     ])
   );

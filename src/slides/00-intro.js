@@ -14,7 +14,7 @@ Hot reloading and Time Travel with Cycle.js
 export default function ({DOM}) {
   return {
     DOM: Observable.just(
-      md(text)
+      div('.title-slide', md(text))
     )
   };
 }

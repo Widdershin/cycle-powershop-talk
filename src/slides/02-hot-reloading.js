@@ -4,7 +4,7 @@ import {Observable} from 'rx';
 import md from '../md.js';
 
 const text = `
-We can shorten the loop!
+How can we speed our loop up?
 ---
 
 Instead of reloading the browser, we can use hot reloading to update the code automagically!

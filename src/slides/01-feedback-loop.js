@@ -7,9 +7,10 @@ const text = `
 Programming is all about feedback loops
 ---
 
-The faster you can see the results of your actions the faster you can improve.
+This entire talk is about one simple idea:
+The faster you can learn from your actions the more quickly you can improve.
 
-A normal browser development cycle looks something like this (assuming you're not doing TDD).
+Your everyday development cycle for the browser might look something like this:
 
 
                           +-------------+
