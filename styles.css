@@ -9,11 +9,11 @@ html, body {
 }
 
 h1, h2, h3, h4, h5 {
-  color: hotpink;
+  color: #ff0080;
 }
 
 pre code {
-  color: hotpink;
+  color: #ff0080;
 }
 
 .app {
