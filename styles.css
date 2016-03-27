@@ -60,7 +60,7 @@ pre code {
 
   justify-content: space-between;
 
-  width: 20%;
+  width: 7em;
 }
 
 .title-slide .markdown {
@@ -85,4 +85,12 @@ button {
 
 button:disabled {
   background: pink;
+}
+
+.wrapper {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 }

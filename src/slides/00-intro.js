@@ -7,7 +7,7 @@ const text = `
 Back to the Future
 ===
 
-Hot reloading and Time Travel with Cycle.js
+Hot Reloading and Time Travel with Cycle.js
 ---
 `;
 

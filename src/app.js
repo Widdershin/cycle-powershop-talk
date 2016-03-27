@@ -7,7 +7,8 @@ const slides = [
   require('./slides/00-intro').default,
   require('./slides/01-feedback-loop').default,
   require('./slides/02-hot-reloading').default,
-  require('./slides/03-cycle-restart').default
+  require('./slides/03-cycle-restart').default,
+  require('./slides/04-counter').default
 ];
 
 function view (slide, slideIndex) {
