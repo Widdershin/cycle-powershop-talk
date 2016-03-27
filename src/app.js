@@ -1,33 +1,55 @@
 import {div, button} from '@cycle/dom';
+import isolate from '@cycle/isolate';
 
 import {Observable} from 'rx';
 
-function view (count) {
+const slides = [
+  function ({DOM}) {
+    return {
+      DOM: Observable.just(div('.hello', 'Hello world!'))
+    };
+  },
+
+  function ({DOM}) {
+    return {
+      DOM: Observable.just(div('.hello', 'Wow such'))
+    };
+  }
+];
+
+function view (slide, slideIndex) {
   return (
-    div('.counter', [
-      div('.count', `Count: ${count}`),
-      button('.subtract', 'Subtract'),
-      button('.add', 'Add')
+    div('.slides', [
+      div('.controls', [
+        button('.previous', {disabled: slideIndex === 0}, 'Back'),
+        slideIndex.toString(),
+        button('.next', {disabled: slideIndex === slides.length - 1}, 'Forward')
+      ]),
+
+      slide.DOM
     ])
   );
 }
 
 export default function App ({DOM}) {
-  const add$ = DOM
-    .select('.add')
+  const next$ = DOM
+    .select('.next')
     .events('click')
     .map(ev => +1);
 
-  const subtract$ = DOM
-    .select('.subtract')
+  const previous$ = DOM
+    .select('.previous')
     .events('click')
     .map(ev => -1);
 
-  const count$ = add$.merge(subtract$)
+  const slideIndex$ = next$.merge(previous$)
     .startWith(0)
     .scan((total, change) => total + change);
 
+  const slide$ = slideIndex$
+    .map(slideIndex => isolate(slides[slideIndex])({DOM}));
+
   return {
-    DOM: count$.map(view)
+    DOM: slide$.withLatestFrom(slideIndex$, view)
   };
 }
