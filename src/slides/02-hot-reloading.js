@@ -9,6 +9,8 @@ We can shorten the loop!
 
 Instead of reloading the browser, we can use hot reloading to update the code automagically!
 
+Hot reloading runs on the server, watches for code changes, and then emits updates to the browser via websocket.
+
                           +-------------+
                           |             |
           +-------------->+ Change code |
@@ -27,12 +29,11 @@ Instead of reloading the browser, we can use hot reloading to update the code au
                          |              |
                          +--------------+
 
-
-`
+`;
 
 export default function slide ({DOM}) {
   return {
     DOM: Observable.just(md(text))
   }
-}
+};
 

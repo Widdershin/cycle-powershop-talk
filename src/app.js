@@ -4,9 +4,10 @@ import isolate from '@cycle/isolate';
 import {Observable} from 'rx';
 
 const slides = [
-  require('./slides/00-intro.js').default,
-  require('./slides/01-feedback-loop.js').default,
-  require('./slides/02-hot-reloading').default
+  require('./slides/00-intro').default,
+  require('./slides/01-feedback-loop').default,
+  require('./slides/02-hot-reloading').default,
+  require('./slides/03-cycle-restart').default
 ];
 
 function view (slide, slideIndex) {

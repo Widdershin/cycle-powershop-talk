@@ -1,15 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
 html, body {
   background: black;
   color: white;
 
 
-  font-family: Arial;
-
-  height: 100%;
+  font-family: 'Lato', sans-serif;
+  height: 98%;
 }
 
 h1, h2, h3, h4, h5 {
   color: #ff0080;
+  margin: 0;
 }
 
 pre code {
@@ -41,7 +43,7 @@ pre code {
 
   font-size: 1.3em;
 
-  margin: 0.5em;
+  padding: 0.8em;
 }
 
 .slide pre {
