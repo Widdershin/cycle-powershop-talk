@@ -1,15 +1,14 @@
+
 import {div, button} from '@cycle/dom';
 import {Observable} from 'rx';
 
 import md from '../md.js';
 
 const text = `
-How can we speed our loop up?
----
+A different kind of loop.
+===
 
-Instead of reloading the browser, we can use **hot reloading** to update the code automagically!
-
-Hot reloading runs on the server, watches for code changes, and then emits updates to the browser via websocket.
+The process of creating software is a loop.
 
                           +-------------+
                           |             |
@@ -29,11 +28,14 @@ Hot reloading runs on the server, watches for code changes, and then emits updat
                          |              |
                          +--------------+
 
+We write software in incremental steps. The faster we take each step the faster we can move.
+
 `;
 
-export default function slide ({DOM}) {
+export default function ({DOM}) {
   return {
-    DOM: Observable.just(md(text))
-  }
-};
-
+    DOM: Observable.just(
+      md(text)
+    )
+  };
+}

@@ -4,14 +4,16 @@ import isolate from '@cycle/isolate';
 import {Observable} from 'rx';
 
 const slides = [
-  require('./slides/00-intro').default,
-  require('./slides/01-feedback-loop').default,
-  require('./slides/02-hot-reloading').default,
-  require('./slides/03-cycle-restart').default,
-  require('./slides/04-whats-the-catch').default,
+  require('./slides/000-intro').default,
+  require('./slides/005-the-plan').default,
+  require('./slides/007-dev-cycle').default,
+  require('./slides/010-feedback-loop').default,
+  require('./slides/020-hot-reloading').default,
+  require('./slides/030-cycle-restart').default,
+  require('./slides/040-whats-the-catch').default,
 
-  require('./slides/98-conclusions').default,
-  require('./slides/99-questions').default,
+  require('./slides/090-conclusions').default,
+  require('./slides/099-questions').default
 ];
 
 function view (slide, slideIndex) {
@@ -60,7 +62,7 @@ function limit (result, boundingArray) {
 export default function App ({DOM, Keys}) {
   const clickNext$ = DOM
     .select('.next')
-    .events('click')
+    .events('click');
 
   const pressRight$ = Keys
     .pressed('Right');

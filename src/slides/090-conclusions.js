@@ -4,7 +4,7 @@ import {Observable} from 'rx';
 
 const text = `
 Conclusions
----
+===
 
 The tighter your feedback loop is, the faster you learn and the more quickly you develop.
 

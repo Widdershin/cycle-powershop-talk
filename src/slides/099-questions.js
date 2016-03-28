@@ -5,7 +5,7 @@ import {Observable} from 'rx';
 
 const text = `
 Questions?
----
+===
 `;
 
 export default function ({DOM}) {

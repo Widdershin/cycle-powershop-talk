@@ -6,7 +6,7 @@ import md from '../md.js';
 
 const text = `
 What's the catch?
----
+===
 
 cycle-restart just works for a lot of applications.
 

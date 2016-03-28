@@ -4,8 +4,8 @@ import {Observable} from 'rx';
 import md from '../md.js';
 
 const text = `
-Programming is all about feedback loops
----
+So how do we optimize the loop?
+===
 
 A typical development cycle for the browser might look something like this:
 
@@ -28,6 +28,9 @@ A typical development cycle for the browser might look something like this:
                      |              |
                      +--------------+
 
+So how do we go faster?
+
+Simple: remove the slow bits.
 `;
 
 export default function ({DOM}) {

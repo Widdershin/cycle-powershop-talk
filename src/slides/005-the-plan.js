@@ -4,11 +4,10 @@ import {Observable} from 'rx';
 import md from '../md.js';
 
 const text = `
-Back to the Future
+The plan.
 ===
 
-Hot Reloading and Time Travel with Cycle.js
----
+Today, we'll be talking about optimizing loops.
 `;
 
 export default function ({DOM}) {
