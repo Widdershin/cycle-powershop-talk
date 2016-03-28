@@ -7,33 +7,26 @@ const text = `
 Programming is all about feedback loops
 ---
 
-This entire talk is about one simple idea:
-The faster you can learn from your actions the more quickly you can improve.
-
-Your everyday development cycle for the browser might look something like this:
+A typical development cycle for the browser might look something like this:
 
 
-                          +-------------+
-                          |             |
-          +-------------->+ Change code +--------------+
-          |               |             |              |
-          |               +-------------+              |
-          |                                            |
-          |                                            |
-          |                                            |
-          |                                            v
-    +-------------+                            +----------------+
-    |             |                            |                |
-    | See results |                            | Reload browser |
-    |             |                            |                |
-    +-------------+                            +----------------+
-          ^                                            |
-          |                                            |
-          |               +--------------+             |
-          |               |              |             |
-          +---------------+ Test changes +<------------+
-                          |              |
-                          +--------------+
+                     +-------------+
+                     |             |
+          +--------->+ Change code +-----------+
+          |          |             |           |
+          |          +-------------+           |
+          |                                    v
+    +-------------+                    +----------------+
+    |             |                    |                |
+    | See results |                    | Reload browser |
+    |             |                    |                |
+    +-------------+                    +----------------+
+          |                                    |
+          |          +--------------+          |
+          |          |              |          |
+          +----------+ Test changes +<---------+
+                     |              |
+                     +--------------+
 
 `;
 

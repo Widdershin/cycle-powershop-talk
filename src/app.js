@@ -8,7 +8,7 @@ const slides = [
   require('./slides/01-feedback-loop').default,
   require('./slides/02-hot-reloading').default,
   require('./slides/03-cycle-restart').default,
-  require('./slides/04-counter').default,
+  require('./slides/04-whats-the-catch').default,
 
   require('./slides/98-conclusions').default,
   require('./slides/99-questions').default,

@@ -7,7 +7,7 @@ const text = `
 How can we speed our loop up?
 ---
 
-Instead of reloading the browser, we can use hot reloading to update the code automagically!
+Instead of reloading the browser, we can use **hot reloading** to update the code automagically!
 
 Hot reloading runs on the server, watches for code changes, and then emits updates to the browser via websocket.
 
