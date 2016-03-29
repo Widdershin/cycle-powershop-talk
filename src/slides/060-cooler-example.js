@@ -51,7 +51,7 @@ function searchGithub (query) {
 }
 
 function parseResults (response) {
-  return response.body.items.slice(0, 10);
+  return response.items.slice(0, 10);
 }
 
 export default function ({DOM, Animation, HTTP}) {
@@ -69,10 +69,14 @@ export default function ({DOM, Animation, HTTP}) {
 
   const search$ = inputSearch$
     .filter(query => query !== '')
-    .debounce(300);
+    .debounce(400);
 
   const response$ = HTTP
-    .mergeAll()
+    .flatMap((response$) =>
+      response$
+        .map(response => response.body)
+        .catch(() => Observable.just({error: 'Rate limit exceeded', items: []}))
+    );
 
   const searchResult$ = response$
     .map(parseResults)
