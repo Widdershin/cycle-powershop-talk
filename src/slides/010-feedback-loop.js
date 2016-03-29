@@ -4,7 +4,7 @@ import {Observable} from 'rx';
 import md from '../md.js';
 
 const text = `
-So how do we optimize the loop?
+Let's talk about the browser
 ===
 
 A typical development cycle for the browser might look something like this:

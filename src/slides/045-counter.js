@@ -12,20 +12,20 @@ function record (stream, time$) {
 }
 
 function logAnimation (time, log) {
-  const width = 30;
+  const width = 50;
   const chars = _.times(width).map(() => '-');
 
   log.forEach(entry => {
     const timeAgo = time - entry.timestamp;
 
-    const logDisplayPosition = Math.ceil(width - 1 - timeAgo * 0.005)
+    const logDisplayPosition = Math.ceil(width - 1 - timeAgo * 0.005);
 
     if (logDisplayPosition >= 0) {
       chars[logDisplayPosition] = 'x';
     }
-  })
+  });
 
-  return chars.join(' ');
+  return chars.join('');
 };
 
 function view (time, count, addLog, subtractLog, domLog) {
@@ -67,7 +67,6 @@ function view (time, count, addLog, subtractLog, domLog) {
 
 export default function Counter ({DOM, Animation}) {
   const time$ = Animation
-    .debounce(5)
     .pluck('timestamp');
 
   const add$ = DOM

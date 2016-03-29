@@ -14,8 +14,7 @@ h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
-pre code {
-  align-self: flex-end;
+pre code:not(.lang-js){
   color: #ff0080;
 }
 
@@ -109,4 +108,18 @@ button:disabled {
 
 .count {
   text-align: center;
+}
+
+blockquote {
+  height: auto;
+  border-left: 3px solid #ff0080;
+  margin: 0px 20px;
+  margin-top: 40px;
+
+  font-size: 1.3em;
+}
+
+blockquote p {
+  margin: 0;
+  padding: 1px 10px;
 }

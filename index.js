@@ -30,7 +30,7 @@ function makeKeysDriver () {
 const drivers = {
   DOM: restartable(makeDOMDriver('.app'), {pauseSinksWhileReplaying: false}),
   Keys: restartable(makeKeysDriver()),
-  Animation: restartable(makeAnimationDriver())
+  Animation: restartable(makeAnimationDriver(), {skipReplay: true})
 };
 
 const {sinks, sources} = run(app, drivers);
