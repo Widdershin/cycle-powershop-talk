@@ -1,12 +1,18 @@
-import {div, button, input} from '@cycle/dom';
+import {div, span, button, input} from '@cycle/dom';
 import {Observable} from 'rx';
 
 import md from '../md.js';
 
-import {record, logAnimation} from '../visualization';
+import {record, logAnimation, sparkle} from '../visualization';
+
+import _ from 'lodash';
+
+function linkify (githubRepo) {
+  return `[${githubRepo}](https://github.com/${githubRepo})`;
+}
 
 function resultText (result) {
-  return `${result.stargazers_count} * - ${result.full_name}`;
+  return `| ★ ${_.padEnd(result.stargazers_count, 5, ' ')} | ${_.padEnd(linkify(result.full_name), 30)} |`;
 }
 
 function view (time, searchLog, results, responseLog, inputLog, resultsLog) {
@@ -21,9 +27,9 @@ function view (time, searchLog, results, responseLog, inputLog, resultsLog) {
                      V
                      |
                      |      +---------------+
-              Events +----> |               |
+              Events +----> | *   *   *  *  |
            HTTP responses   | main function |
-             (sources)      |               | +-----+ DOM updates
+             (sources)      |   *   *   *   | +-----+ DOM updates
                             +---------------+       | HTTP requests
                                                     |  (sinks)
                                                     V
@@ -32,26 +38,29 @@ function view (time, searchLog, results, responseLog, inputLog, resultsLog) {
   `;
 
   const resultsText = `
-    ${results.map(resultText).join('\n    ')}
+    ${results.error}
+
+  | Stars | Repo |
+  |-------|------|
+  ${results.items.map(resultText).join('\n')}
   `;
 
   return (
     div('.wrapper', [
-      md(text),
+      md(sparkle(text, time, inputLog, responseLog)),
 
-      `Search: `, input('.search-github'),
+      span([
+        `Search Github: `,
+        input('.search-github'),
+      ]),
 
-      md(resultsText)
+      md(resultsText, 'counter-diagram')
     ])
   );
 }
 
 function searchGithub (query) {
   return `https://api.github.com/search/repositories?q=${query}`;
-}
-
-function parseResults (response) {
-  return response.items.slice(0, 10);
 }
 
 export default function ({DOM, Animation, HTTP}) {
@@ -65,22 +74,21 @@ export default function ({DOM, Animation, HTTP}) {
 
   const clearResults$ = inputSearch$
     .filter(query => query === '')
-    .map(() => []);
+    .map(() => ({items: [], error: ''}));
 
   const search$ = inputSearch$
     .filter(query => query !== '')
-    .debounce(400);
+    .debounce(500)
 
   const response$ = HTTP
     .flatMap((response$) =>
       response$
-        .map(response => response.body)
+        .map(response => ({items: response.body.items.slice(0, 5), error: ''}))
         .catch(() => Observable.just({error: 'Rate limit exceeded', items: []}))
     );
 
   const searchResult$ = response$
-    .map(parseResults)
-    .startWith([])
+    .startWith({items: [], error: ''})
     .merge(clearResults$);
 
   const inputLog$ = record(inputSearch$, time$);

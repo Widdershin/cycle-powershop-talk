@@ -27,10 +27,6 @@ A typical development cycle for the browser might look something like this:
           +----------+ Test changes +<---------+
                      |              |
                      +--------------+
-
-So how do we go faster?
-
-Simple: remove the slow bits.
 `;
 
 export default function ({DOM}) {

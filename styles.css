@@ -123,3 +123,31 @@ blockquote p {
   margin: 0;
   padding: 1px 10px;
 }
+
+input {
+  border: 1px solid #ff0080;
+  background: #111;
+  font-size: 1.1em;
+  color: white;
+  margin: 3px;
+}
+
+table {
+  margin: 10px;
+  border-collapse: collapse;
+  border-style: hidden;
+}
+
+table th {
+}
+
+table td, table th {
+  border: 1px solid #ff0080;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 5px;
+}
+
+a {
+  color: skyblue;
+}

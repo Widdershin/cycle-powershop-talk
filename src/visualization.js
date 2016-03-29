@@ -23,4 +23,18 @@ function logAnimation (time, log) {
   return chars.join('');
 }
 
-export {record, logAnimation};
+function sparkle (text, time, ...logs) {
+  const events = _.flatten(logs);
+
+  function sparkleMagic (star, offset) {
+    return Math.round(offset % (Math.round(time * 0.01) % 10)) % 2 === 0 ? '*' : ' ';
+  }
+
+  if (events.some(event => (time - event.timestamp) < 400)) {
+    return text.replace(/\*/g, sparkleMagic);
+  }
+
+  return text.replace(/\*/g, ' ');
+}
+
+export {record, logAnimation, sparkle};

@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import md from '../md.js';
 
-import {record, logAnimation} from '../visualization';
+import {record, logAnimation, sparkle} from '../visualization';
 
 function view (time, count, addLog, subtractLog, domLog) {
   const text = `
@@ -20,11 +20,9 @@ function view (time, count, addLog, subtractLog, domLog) {
     Subtract: ${logAnimation(time, subtractLog)}
                     V
                     |       +---------------+
-             Events +-----> |               |
-            (sources)       |               |
-                            | main function |
-                            |               |
-                            |               | +-----+ DOM updates
+             Events +-----> | *   *   *  *  |
+            (sources)       | main function |
+                            |   *   *   *   | +-----+ DOM updates
                             +---------------+       |   (sinks)
                                                     V
     DOM:      ${logAnimation(time, domLog)}
@@ -32,7 +30,7 @@ function view (time, count, addLog, subtractLog, domLog) {
 
   return (
     div('.wrapper', [
-      md(text),
+      md(sparkle(text, time, addLog, subtractLog), 'counter-diagram'),
       div('.counter', [
         div('.count', `Count: ${count}`),
         button('.subtract', 'Subtract'),

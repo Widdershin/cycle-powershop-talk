@@ -7,6 +7,6 @@ marked.setOptions({
   highlight: (code, lang) => lang && highlight(lang, code).value
 });
 
-export default function md (markdown) {
-  return div('.markdown', {innerHTML: marked(markdown)});
+export default function md (markdown, key) {
+  return div('.markdown', {key, innerHTML: marked(markdown)});
 }

@@ -7,11 +7,11 @@ const text = `
 Well that's pretty dandy.
 ===
 
-There's one problem though. We still have to navigate back through the slides every time we change the code.
+There's still one problem though. We still have to navigate back through the slides every time we change the code.
 
 This is where **cycle-restart** comes in.
 
-**cycle-restart** records all of the actions you perform (say, navigating through a slide deck), and plays them back when your code is reloaded.
+We can use **cycle-restart** to automatically replay the events we've performed when the code changes.
 
     +-------------+
     |             |
