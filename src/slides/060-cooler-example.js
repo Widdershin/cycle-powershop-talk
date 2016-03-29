@@ -7,12 +7,12 @@ import {record, logAnimation, sparkle} from '../visualization';
 
 import _ from 'lodash';
 
-function linkify (githubRepo) {
+function linkRepo (githubRepo) {
   return `[${githubRepo}](https://github.com/${githubRepo})`;
 }
 
 function resultText (result) {
-  return `| ★ ${_.padEnd(result.stargazers_count, 5, ' ')} | ${_.padEnd(linkify(result.full_name), 30)} |`;
+  return `| ★ ${result.stargazers_count} | ${result.full_name} |`;
 }
 
 function view (time, searchLog, results, responseLog, inputLog, resultsLog) {
