@@ -1,5 +1,6 @@
 import {run} from '@cycle/core';
 import {makeDOMDriver} from '@cycle/dom';
+import {makeAnimationDriver} from 'cycle-animation-driver';
 import {restart, restartable} from 'cycle-restart';
 import isolate from '@cycle/isolate';
 import {Observable} from 'rx';
@@ -28,7 +29,8 @@ function makeKeysDriver () {
 
 const drivers = {
   DOM: restartable(makeDOMDriver('.app'), {pauseSinksWhileReplaying: false}),
-  Keys: restartable(makeKeysDriver())
+  Keys: restartable(makeKeysDriver()),
+  Animation: restartable(makeAnimationDriver())
 };
 
 const {sinks, sources} = run(app, drivers);

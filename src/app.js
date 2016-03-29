@@ -11,6 +11,8 @@ const slides = [
   require('./slides/020-hot-reloading').default,
   require('./slides/030-cycle-restart').default,
   require('./slides/040-whats-the-catch').default,
+  require('./slides/045-counter').default,
+  require('./slides/050-determinism').default,
 
   require('./slides/090-conclusions').default,
   require('./slides/099-questions').default
@@ -32,12 +34,12 @@ function view (slide, slideIndex) {
 
 const cachedSlides = {};
 
-function slide (slideIndex, {DOM}) {
+function slide (slideIndex, sources) {
   if (slideIndex in cachedSlides) {
     return cachedSlides[slideIndex];
   }
 
-  const fetchedSlide = isolate(slides[slideIndex])({DOM});
+  const fetchedSlide = isolate(slides[slideIndex])(sources);
 
   cachedSlides[slideIndex] = fetchedSlide;
 
@@ -59,7 +61,9 @@ function limit (result, boundingArray) {
   return result;
 }
 
-export default function App ({DOM, Keys}) {
+export default function App (sources) {
+  const {DOM, Keys} = sources;
+
   const clickNext$ = DOM
     .select('.next')
     .events('click');
@@ -93,7 +97,7 @@ export default function App ({DOM, Keys}) {
     .scan((total, change) => limit(total + change, slides));
 
   const slide$ = slideIndex$
-    .map(slideIndex => slide(slideIndex, {DOM}));
+    .map(slideIndex => slide(slideIndex, sources));
 
   return {
     DOM: slide$.withLatestFrom(slideIndex$, view)

@@ -4,16 +4,15 @@ import {Observable} from 'rx';
 import md from '../md.js';
 
 const text = `
-Back to the Future
+Determinism
 ===
 
-Hot Reloading ~~and Time Travel~~ with Cycle.js
+
+
 `;
 
 export default function ({DOM}) {
   return {
-    DOM: Observable.just(
-      div('.title-slide', md(text))
-    )
+    DOM: Observable.just(md(text))
   };
 }

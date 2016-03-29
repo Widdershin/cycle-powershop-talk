@@ -1,20 +1,25 @@
-
-import {div, button} from '@cycle/dom';
 import {Observable} from 'rx';
 
 import md from '../md.js';
 
 const text = `
-What's the catch?
+How does it work?
 ===
 
-cycle-restart just works for a lot of applications.
+@staltz once asked "what if the user was a function?".
 
-Your application needs to be **deterministic**.
+                    +---------------+
+     Events +-----> |               |
+    (sources)       |               |
+                    | main function |
+                    |               |
+                    |               | +-----> DOM updates
+                    +---------------+           (sinks)
 
-What does that mean?
+**cycle-restart** works by recording the input to your \`main\` function.
 
-Given the same input, your application should return the same output.
+When **hot-reloading** updates the code, **cycle-restart** is called and the recorded events are replayed with the new code.
+
 `;
 
 export default function ({DOM}) {
