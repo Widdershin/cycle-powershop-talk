@@ -13,6 +13,7 @@ const slides = [
   require('./slides/040-whats-the-catch').default,
   require('./slides/045-counter').default,
   require('./slides/050-determinism').default,
+  require('./slides/060-cooler-example').default,
 
   require('./slides/090-conclusions').default,
   require('./slides/099-questions').default
@@ -100,6 +101,7 @@ export default function App (sources) {
     .map(slideIndex => slide(slideIndex, sources));
 
   return {
-    DOM: slide$.withLatestFrom(slideIndex$, view)
+    DOM: slide$.withLatestFrom(slideIndex$, view),
+    HTTP: slide$.flatMap(slide => slide.HTTP || [])
   };
 }

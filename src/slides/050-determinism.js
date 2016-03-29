@@ -20,12 +20,12 @@ Put technically, your application needs to work **deterministically**.
 
 \`\`\`js
 // deterministic
-add(3, 4) // 7
-add(3, 4) // 7
+add(3, 4) // => 7
+add(3, 4) // => 7
 
 // non-deterministic
-Math.random() // 0.5743365696544249
-Math.random() // 0.7899047162464619
+Math.random() // => 0.5743365696544249
+Math.random() // => 0.7899047162464619
 \`\`\`
 `;
 
