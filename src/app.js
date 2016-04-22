@@ -16,6 +16,7 @@ const slides = [
   require('./slides/060-cooler-example').default,
 
   require('./slides/090-conclusions').default,
+  require('./slides/095-addendum').default,
   require('./slides/099-questions').default
 ];
 
