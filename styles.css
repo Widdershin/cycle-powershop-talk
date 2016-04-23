@@ -151,3 +151,8 @@ table td, table th {
 a {
   color: skyblue;
 }
+
+.about-me p {
+  text-align: center;
+  font-size: 1.7em;
+}

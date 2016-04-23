@@ -17,6 +17,7 @@ const slides = [
 
   require('./slides/090-conclusions').default,
   require('./slides/095-addendum').default,
+  require('./slides/097-about-me').default,
   require('./slides/099-questions').default
 ];
 
